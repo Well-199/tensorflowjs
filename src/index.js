@@ -19,7 +19,8 @@ const gestureStrings = {
 	'rock': '👊🏻',
 	'paper': '🖐',
 	'scissors': '✌🏻',
-	'dont': '🙅'
+	'dont': '🙅',
+	'love-you-gesture': '🤟'
 }
 
 const base = ['Horizontal ', 'Diagonal Up ']
@@ -71,7 +72,6 @@ async function main() {
 			pair.add(chosenHand)
     	}
 
-    
 		addToPairIfCorrect(chosenHand)
 
 		if (pair.size !== 2) return
@@ -92,12 +92,12 @@ async function main() {
 		})
 
     	for (const hand of hands) {
+
       		for (const keypoint of hand.keypoints) {
 				const name = keypoint.name.split('_')[0].toString().toLowerCase()
 				const color = landmarkColors[name]
 				drawPoint(ctx, keypoint.x, keypoint.y, 3, color)
       		}
-
 
 			const keypoints3D = hand.keypoints3D.map(keypoint => [keypoint.x, keypoint.y, keypoint.z])
 			const prediction = GE.estimate(keypoints3D, 8.5)

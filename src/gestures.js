@@ -4,7 +4,7 @@ const rockGesture = new GestureDescription('rock') // ✊️
 const paperGesture = new GestureDescription('paper') // 🖐
 const scissorsGesture = new GestureDescription('scissors') // ✌️
 const dontGesture = new GestureDescription('dont') // ✌️
-
+const loveYouGesture = new GestureDescription('love-you-gesture') //🤟
 
 // Rock
 // -----------------------------------------------------------------------------
@@ -20,6 +20,26 @@ for (let finger of [Finger.Index, Finger.Middle, Finger.Ring, Finger.Pinky]) {
   rockGesture.addCurl(finger, FingerCurl.HalfCurl, 0.9)
 }
 
+// love You Gesture
+// Polegar não considera 100%
+loveYouGesture.addCurl(Finger.Thumb, FingerCurl.NoCurl, 1.0)
+
+// Indicador 100% aberto
+loveYouGesture.addCurl(Finger.Index, FingerCurl.HalfCurl, 1.0)
+
+// Mindinho 100% aberto
+loveYouGesture.addCurl(Finger.Pinky, FingerCurl.NoCurl, 1.0)
+
+// Anelar 100% fechado
+//loveYouGesture.addCurl(Finger.Ring, FingerCurl.NoCurl, 0.5)
+
+// Médio 100% fechado
+//loveYouGesture.addCurl(Finger.Middle, FingerCurl.NoCurl, 0.5)
+
+
+for (let finger of [Finger.Middle, Finger.Ring]) {
+	loveYouGesture.addCurl(finger, FingerCurl.FullCurl, 1.0)
+}
 
 // Paper
 // -----------------------------------------------------------------------------
@@ -28,7 +48,6 @@ for (let finger of [Finger.Index, Finger.Middle, Finger.Ring, Finger.Pinky]) {
 for (let finger of Finger.all) {
   paperGesture.addCurl(finger, FingerCurl.NoCurl, 1.0)
 }
-
 
 // Scissors
 //------------------------------------------------------------------------------
@@ -45,7 +64,6 @@ scissorsGesture.addCurl(Finger.Ring, FingerCurl.HalfCurl, 0.9)
 scissorsGesture.addCurl(Finger.Pinky, FingerCurl.FullCurl, 1.0)
 scissorsGesture.addCurl(Finger.Pinky, FingerCurl.HalfCurl, 0.9)
 
-
 // dontGesture🙅
 //------------------------------------------------------------------------------
 for (let finger of Finger.all) {
@@ -61,7 +79,7 @@ for (let finger of Finger.all) {
 
 const gestures = [
   rockGesture, paperGesture, scissorsGesture, 
-  dontGesture
+  dontGesture, loveYouGesture
 ]
 export {
   gestures
